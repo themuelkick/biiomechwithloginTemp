@@ -1,0 +1,44 @@
+DROP TABLE public.profiles;
+
+-- Then run your new CREATE TABLE statement
+create table public.profiles (
+  id uuid not null,
+  email text not null,
+  password text not null,
+  is_admin boolean null default false,
+  created_at timestamp with time zone null default now(),
+  constraint profiles_pkey primary key (id)
+);
+
+ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Allow anyone to insert profile"
+ON public.profiles
+FOR INSERT
+TO public
+WITH CHECK (true);
+
+CREATE POLICY "Allow select by email and password"
+ON public.profiles
+FOR SELECT
+TO public
+USING (true);
+
+CREATE POLICY "Allow update by email and password"
+ON public.profiles
+FOR UPDATE
+TO public
+USING (true);
+
+CREATE POLICY "Allow delete by email and password"
+ON public.profiles
+FOR DELETE
+TO public
+USING (true);
+
+
+ALTER TABLE public.sessions ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Allow all select" ON public.sessions FOR SELECT TO public USING (true);
+
+ALTER TABLE public.players ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Allow all select" ON public.players FOR SELECT TO public USING (true);
