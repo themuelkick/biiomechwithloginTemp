@@ -230,7 +230,8 @@ def main_app(user_email):
                     # --- Insert debug log for video view ---
                     try:
                         video_id_val = None
-                        if video_source.startswith("https://ggqnlqhncarooowdgfpo.supabase.co/storage/v1/object/public/videos/") or video_source.startswith("https://npvwctwurhttdzvbvgcz.supabase.co/storage/v1/object/public/videos/"):
+                        video_prefix = f"{SUPABASE_URL}/storage/v1/object/public/videos/"
+                        if video_source.startswith(video_prefix) or video_source.startswith("https://npvwctwurhttdzvbvgcz.supabase.co/storage/v1/object/public/videos/"):
                             video_id_val = os.path.basename(video_source)  # Always log file name only
                         else:
                             video_id_val = video_source  # Always log full URL for YouTube/other
@@ -328,7 +329,8 @@ def main_app(user_email):
                         # --- Insert debug log for left video view ---
                         try:
                             video_id_val = None
-                            if video_source.startswith("https://ggqnlqhncarooowdgfpo.supabase.co/storage/v1/object/public/videos/") or video_source.startswith("https://npvwctwurhttdzvbvgcz.supabase.co/storage/v1/object/public/videos/"):
+                            video_prefix = f"{SUPABASE_URL}/storage/v1/object/public/videos/"
+                            if video_source.startswith(video_prefix) or video_source.startswith("https://npvwctwurhttdzvbvgcz.supabase.co/storage/v1/object/public/videos/"):
                                 video_id_val = os.path.basename(video_source)
                             else:
                                 video_id_val = video_source
@@ -405,7 +407,8 @@ def main_app(user_email):
                         # --- Insert debug log for right video view ---
                         try:
                             video_id_val = None
-                            if video_source.startswith("https://ggqnlqhncarooowdgfpo.supabase.co/storage/v1/object/public/videos/") or video_source.startswith("https://npvwctwurhttdzvbvgcz.supabase.co/storage/v1/object/public/videos/"):
+                            video_prefix = f"{SUPABASE_URL}/storage/v1/object/public/videos/"
+                            if video_source.startswith(video_prefix) or video_source.startswith("https://npvwctwurhttdzvbvgcz.supabase.co/storage/v1/object/public/videos/"):
                                 video_id_val = os.path.basename(video_source)
                             else:
                                 video_id_val = video_source
