@@ -129,7 +129,7 @@ def main_app(user_email):
                         st.error(f"CSV upload to Supabase failed: {e}")
                         return
                     final_video_source = youtube_link
-                    kinovea_csv_url = f"https://ggqnlqhncarooowdgfpo.supabase.co/storage/v1/object/public/csvs/{unique_filename}"
+                    kinovea_csv_url = f"{SUPABASE_URL}/storage/v1/object/public/csvs/{unique_filename}"
                 elif uploaded_file.type in ["video/mp4", "video/quicktime", "video/x-msvideo"]:
                     # Video upload
                     try:
@@ -142,8 +142,8 @@ def main_app(user_email):
                     except Exception as e:
                         st.error(f"Video upload to Supabase failed: {e}")
                         return
-                    final_video_source = f"https://ggqnlqhncarooowdgfpo.supabase.co/storage/v1/object/public/videos/{unique_filename}"
-                    kinovea_csv_url = f"https://ggqnlqhncarooowdgfpo.supabase.co/storage/v1/object/public/videos/{unique_filename}"
+                    final_video_source = f"{SUPABASE_URL}/storage/v1/object/public/videos/{unique_filename}"
+                    kinovea_csv_url = f"{SUPABASE_URL}/storage/v1/object/public/videos/{unique_filename}"
                 else:
                     st.warning("⚠️ Please upload a valid CSV or video file (mp4, mov, avi).")
                     return
